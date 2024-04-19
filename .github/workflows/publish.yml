@@ -34,5 +34,11 @@ jobs:
         pip install build
     - name: Build package
       run: python -m build
+    - name: Sign the dists with Sigstore
+      uses: sigstore/gh-action-sigstore-python@v1.2.3
+      with:
+        inputs: >-
+          ./dist/*.tar.gz
+          ./dist/*.whl
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@release/v1
