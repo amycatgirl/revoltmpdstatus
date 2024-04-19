@@ -31,10 +31,10 @@ class Client(revolt.Client):
             if player_status["state"] != "play":
                 status = "🌙 Idle..."
                 user_presence = revolt.PresenceType.idle
-            elif current_song["title"] is None and current_song["artist"] is not None:
+            elif "title" not in current_song and "artist" in current_song:
                 status = f"🎵 {current_song['file']} - {current_song['artist']}"
                 user_presence = revolt.PresenceType.focus
-            elif current_song["title"] is None and current_song["artist"] is None:
+            elif "title" not in current_song and "artist" not in current_song:
                 status = f"🎵 {current_song['file']}"
                 user_presence = revolt.PresenceType.focus
             else:
